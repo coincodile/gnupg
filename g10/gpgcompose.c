@@ -111,7 +111,12 @@ valid_cipher (int cipher_id)
           || cipher_id == CIPHER_ALGO_TWOFISH
           || cipher_id == CIPHER_ALGO_CAMELLIA128
           || cipher_id == CIPHER_ALGO_CAMELLIA192
-          || cipher_id == CIPHER_ALGO_CAMELLIA256);
+          || cipher_id == CIPHER_ALGO_CAMELLIA256
+		  /*
+		   * 4- Add valid cipher id
+		   */
+          || cipher_id == CIPHER_ALGO_XOR
+  );
 }
 
 /* Parse a session key encoded as a string of the form x:HEXDIGITS
@@ -1882,7 +1887,12 @@ sk_esk_cipher (const char *option, int argc, char *argv[], void *cookie)
   if (argc == 0)
     log_fatal ("Usage: %s %s\n", option, usage);
 
-  if (strcasecmp (argv[0], "IDEA") == 0)
+  /*
+   * 6- convert param to cipher id
+   */
+  if (strcasecmp (argv[0], "XOR") == 0)
+      cipher = CIPHER_ALGO_XOR;
+  else if (strcasecmp (argv[0], "IDEA") == 0)
     cipher = CIPHER_ALGO_IDEA;
   else if (strcasecmp (argv[0], "3DES") == 0)
     cipher = CIPHER_ALGO_3DES;

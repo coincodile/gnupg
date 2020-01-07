@@ -412,6 +412,14 @@ map_cipher_openpgp_to_gcry (cipher_algo_t algo)
   switch (algo)
     {
     case CIPHER_ALGO_NONE:        return GCRY_CIPHER_NONE;
+    /*
+     * 7- map gpg alg id into gcry alg id
+     */
+#ifdef GPG_USE_XOR
+    case CIPHER_ALGO_XOR:    return GCRY_CIPHER_XOR;
+#else
+    case CIPHER_ALGO_XOR:    return 0;
+#endif
 
 #ifdef GPG_USE_IDEA
     case CIPHER_ALGO_IDEA:        return GCRY_CIPHER_IDEA;
@@ -484,6 +492,10 @@ map_cipher_gcry_to_openpgp (enum gcry_cipher_algos algo)
 {
   switch (algo)
     {
+  /*
+   * 8- map gcry id into gpg id
+   */
+    case GCRY_CIPHER_XOR:        return CIPHER_ALGO_XOR;
     case GCRY_CIPHER_NONE:        return CIPHER_ALGO_NONE;
     case GCRY_CIPHER_IDEA:        return CIPHER_ALGO_IDEA;
     case GCRY_CIPHER_3DES:        return CIPHER_ALGO_3DES;
@@ -567,6 +579,10 @@ openpgp_cipher_algo_name (cipher_algo_t algo)
 {
   switch (algo)
     {
+  /*
+   * 9- map gpg alg xor to string
+   */
+    case CIPHER_ALGO_XOR:        return "XOR";
     case CIPHER_ALGO_IDEA:        return "IDEA";
     case CIPHER_ALGO_3DES:	  return "3DES";
     case CIPHER_ALGO_CAST5:	  return "CAST5";

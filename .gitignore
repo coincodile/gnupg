@@ -161,3 +161,8 @@ x.parm
 /VERSION
 /swdb.lst
 /swdb.lst.sig
+/.settings/
+/.autotools
+/.cproject
+/.project
+/config.h.in~

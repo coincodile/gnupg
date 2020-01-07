@@ -137,6 +137,10 @@ typedef enum
     CIPHER_ALGO_CAMELLIA128 = 11,
     CIPHER_ALGO_CAMELLIA192 = 12,
     CIPHER_ALGO_CAMELLIA256 = 13,
+	/*
+	 * 1- Add XOR cipher key
+	 */
+    CIPHER_ALGO_XOR = 14,
     CIPHER_ALGO_PRIVATE10   = 110
   }
 cipher_algo_t;

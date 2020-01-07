@@ -299,6 +299,10 @@ GNUPG_GPG_DISABLE_ALGO([ecdh],[ECDH public key])
 GNUPG_GPG_DISABLE_ALGO([ecdsa],[ECDSA public key])
 GNUPG_GPG_DISABLE_ALGO([eddsa],[EdDSA public key])
 
+#
+# 10- Add confuor to build
+#
+GNUPG_GPG_DISABLE_ALGO([xor],[XOR cipher])
 GNUPG_GPG_DISABLE_ALGO([idea],[IDEA cipher])
 # 3DES is a MUST algorithm
 GNUPG_GPG_DISABLE_ALGO([cast5],[CAST5 cipher])

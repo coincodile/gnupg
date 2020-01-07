@@ -74,6 +74,11 @@ gnupg_initialize_compliance (int gnupg_module_name)
   log_assert ((int) GCRY_MD_SHA512       == (int) DIGEST_ALGO_SHA512);
   log_assert ((int) GCRY_MD_SHA224       == (int) DIGEST_ALGO_SHA224);
 
+  /*
+   * 2-accepted type
+   */
+  // log_assert ((int) GCRY_CIPHER_XOR == (int) CIPHER_ALGO_XOR);
+
   switch (gnupg_module_name)
     {
     case GNUPG_MODULE_NAME_GPGSM:
@@ -384,6 +389,10 @@ gnupg_cipher_is_allowed (enum gnupg_compliance_mode compliance, int producer,
 	    }
 	  log_assert (!"reached");
 
+	  /*
+	   * 3- Add to allowed cipher
+	   */
+	  case CIPHER_ALGO_XOR:
 	case CIPHER_ALGO_BLOWFISH:
 	case CIPHER_ALGO_CAMELLIA128:
 	case CIPHER_ALGO_CAMELLIA192:
